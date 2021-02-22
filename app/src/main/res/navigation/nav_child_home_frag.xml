@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_child_home_frag"
+    app:startDestination="@id/allGoodsFragment">
+
+    <fragment
+        android:id="@+id/allGoodsFragment"
+        android:name="uz.triples.qulaymarket.home.AllGoodsFragment"
+        android:label="fragment_all_goods"
+        tools:layout="@layout/fragment_all_goods" >
+        <action
+            android:id="@+id/action_allGoodsFragment_to_recentlySearchedFragment"
+            app:destination="@id/recentlySearchedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recentlySearchedFragment"
+        android:name="uz.triples.qulaymarket.home.RecentlySearchedFragment"
+        android:label="fragment_recently_searched"
+        tools:layout="@layout/fragment_recently_searched" >
+        <action
+            android:id="@+id/action_recentlySearchedFragment_to_notFoundFragment"
+            app:destination="@id/notFoundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notFoundFragment"
+        android:name="uz.triples.qulaymarket.home.NotFoundFragment"
+        android:label="NotFoundFragment" />
+</navigation>

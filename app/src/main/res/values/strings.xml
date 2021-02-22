@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Qulay Market</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Qulay Marketga hush kelibsiz</string>
+    <string name="kirish">Kirish</string>
+    <string name="ro_yxatdan_o_tish">Ro` yxatdan o` tish</string>
+    <string name="telefon_raqamyoki_email">Telefon raqam yoki email</string>
+    <string name="parol">Parol</string>
+    <string name="_00_30">00:30</string>
+    <string name="kodni_kiriting">Biz sizga yuborgan<br>tekshiruv kodini kiriting</br></string>
+    <string name="clear">Clear</string>
+    <string name="restart">Qayta urinish</string>
+    <string name="rewrite">Yana bir marta kiriting</string>
+    <string name="tasdiqlayman">Men o‘zimni voyaga yetganligimni va e‘lonlarni joylashtirish uchun javobgar ekanligimni tasdiqlayman.</string>
+    <string name="info_liked">Sizga yoqqan e’lonlar ustiga like bosing va ular shu yerda ko’rinadi</string>
+    <string name="example">Product title here, max length will be 30 may be</string>
+    <string name="all_products"><u>Muallifning barcha e` lonlari</u></string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "863788570163",
+    "project_id": "qulaymarket-61938",
+    "storage_bucket": "qulaymarket-61938.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863788570163:android:6b8219202b252a93577546",
+        "android_client_info": {
+          "package_name": "uz.triples.qulaymarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863788570163-s4e3keajjq7thj84m5j373eulk1ukkcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ioJVofzDXhT7KIBEs5Xq676LJubXxh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863788570163-s4e3keajjq7thj84m5j373eulk1ukkcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
