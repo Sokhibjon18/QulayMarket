@@ -1,5 +1,6 @@
 package uz.triples.qulaymarket
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -7,15 +8,32 @@ import androidx.navigation.findNavController
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     private val mainContainer: NavController by lazy { findNavController(R.id.fragmentContainer) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        loadLanguage()
+
         setContentView(R.layout.activity_home)
 
         initializeTabOnClick()
+    }
+
+    private fun loadLanguage(){
+        val languageToLoad = "uz"
+
+        val locale = Locale(languageToLoad)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        baseContext.resources.updateConfiguration(
+            config,
+            baseContext.resources.displayMetrics
+        )
     }
 
     private fun initializeTabOnClick() {
@@ -25,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
                 when (tab!!.position) {
                     0 -> mainContainerNavigator(R.id.mainFragment)
                     1 -> mainContainerNavigator(R.id.likedFragment)
+                    4 -> mainContainerNavigator(R.id.profileFragment)
                 }
             }
 
@@ -57,6 +76,9 @@ class HomeActivity : AppCompatActivity() {
             } else {
                 super.onBackPressed()
             }
+        } else if(currentFragment == R.id.profileFragment){
+            tabLayout.getTabAt(0)?.select()
+            super.onBackPressed()
         }
         super.onBackPressed()
     }

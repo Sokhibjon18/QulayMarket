@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_productFragment"
             app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/likedFragment"
@@ -27,4 +30,89 @@
         android:name="uz.triples.qulaymarket.product.ProductFragment"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="uz.triples.qulaymarket.profile.ProfileFragment"
+        android:label="fragment_profile_registered"
+        tools:layout="@layout/fragment_profile_registered" >
+        <action
+            android:id="@+id/action_profileFragment_to_myProfileDetails"
+            app:destination="@id/myProfileDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileDetails"
+        android:name="uz.triples.qulaymarket.profile.MyProfileDetails"
+        android:label="fragment_my_profile_details"
+        tools:layout="@layout/fragment_my_profile_details" >
+        <action
+            android:id="@+id/action_myProfileDetails_to_changeNameFragment"
+            app:destination="@id/changeNameFragment" />
+        <action
+            android:id="@+id/action_myProfileDetails_to_changeBirthdayFragment"
+            app:destination="@id/changeBirthdayFragment" />
+        <action
+            android:id="@+id/action_myProfileDetails_to_changeEmailFragment"
+            app:destination="@id/changeEmailFragment" />
+        <action
+            android:id="@+id/action_myProfileDetails_to_changePhoneNumberFragment"
+            app:destination="@id/changePhoneNumberFragment" />
+        <action
+            android:id="@+id/action_myProfileDetails_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeNameFragment"
+        android:name="uz.triples.qulaymarket.profile.ChangeNameFragment"
+        android:label="fragment_change_name"
+        tools:layout="@layout/fragment_change_name" >
+        <action
+            android:id="@+id/action_changeNameFragment_to_myProfileDetails"
+            app:destination="@id/myProfileDetails"
+            app:popUpTo="@id/myProfileDetails"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeBirthdayFragment"
+        android:name="uz.triples.qulaymarket.profile.ChangeBirthdayFragment"
+        android:label="fragment_change_birthday"
+        tools:layout="@layout/fragment_change_birthday" >
+        <action
+            android:id="@+id/action_changeBirthdayFragment_to_myProfileDetails"
+            app:destination="@id/myProfileDetails"
+            app:popUpTo="@id/changeBirthdayFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeEmailFragment"
+        android:name="uz.triples.qulaymarket.profile.ChangeEmailFragment"
+        android:label="fragment_change_email"
+        tools:layout="@layout/fragment_change_email" >
+        <action
+            android:id="@+id/action_changeEmailFragment_to_myProfileDetails"
+            app:destination="@id/myProfileDetails"
+            app:popUpTo="@id/myProfileDetails"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePhoneNumberFragment"
+        android:name="uz.triples.qulaymarket.profile.ChangePhoneNumberFragment"
+        android:label="fragment_change_phone_number"
+        tools:layout="@layout/fragment_change_phone_number" >
+        <action
+            android:id="@+id/action_changePhoneNumberFragment_to_myProfileDetails2"
+            app:destination="@id/myProfileDetails"
+            app:popUpTo="@id/myProfileDetails"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="uz.triples.qulaymarket.profile.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_myProfileDetails"
+            app:destination="@id/myProfileDetails"
+            app:popUpTo="@id/myProfileDetails"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

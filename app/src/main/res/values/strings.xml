@@ -2,9 +2,9 @@
     <string name="app_name">Qulay Market</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="welcome">Qulay Marketga hush kelibsiz</string>
+    <string name="welcome">Qulay Marketga xush kelibsiz</string>
     <string name="kirish">Kirish</string>
-    <string name="ro_yxatdan_o_tish">Ro` yxatdan o` tish</string>
+    <string name="ro_yxatdan_o_tish">Ro`yxatdan o`tish</string>
     <string name="telefon_raqamyoki_email">Telefon raqam yoki email</string>
     <string name="parol">Parol</string>
     <string name="_00_30">00:30</string>
