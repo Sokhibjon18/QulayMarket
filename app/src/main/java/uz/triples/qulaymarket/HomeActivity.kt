@@ -13,6 +13,20 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
     private val mainContainer: NavController by lazy { findNavController(R.id.fragmentContainer) }
 
+    private val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
+        if(destination.id == R.id.mainFragment){
+            tabLayout.getTabAt(0)?.select()
+        } else if(destination.id == R.id.likedFragment){
+            tabLayout.getTabAt(1)?.select()
+        } else if(destination.id == R.id.addAnnouncementFragment){
+            tabLayout.getTabAt(2)?.select()
+        } else if(destination.id == R.id.chatNotFoundFragment){
+            tabLayout.getTabAt(3)?.select()
+        } else if(destination.id == R.id.profileFragment){
+            tabLayout.getTabAt(4)?.select()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,6 +35,16 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         initializeTabOnClick()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainContainer.addOnDestinationChangedListener(listener)
+    }
+
+    override fun onPause() {
+        mainContainer.removeOnDestinationChangedListener(listener)
+        super.onPause()
     }
 
     private fun loadLanguage(){
@@ -43,6 +67,8 @@ class HomeActivity : AppCompatActivity() {
                 when (tab!!.position) {
                     0 -> mainContainerNavigator(R.id.mainFragment)
                     1 -> mainContainerNavigator(R.id.likedFragment)
+                    2 -> mainContainerNavigator(R.id.addAnnouncementFragment)
+                    3 -> mainContainerNavigator(R.id.chatNotFoundFragment)
                     4 -> mainContainerNavigator(R.id.profileFragment)
                 }
             }
@@ -76,10 +102,13 @@ class HomeActivity : AppCompatActivity() {
             } else {
                 super.onBackPressed()
             }
-        } else if(currentFragment == R.id.profileFragment){
-            tabLayout.getTabAt(0)?.select()
-            super.onBackPressed()
         }
+
+//        else if(currentFragment == R.id.profileFragment || currentFragment == R.id.addAnnouncementFragment
+//            || currentFragment == R.id.likedFragment || currentFragment == R.id.chatNotFoundFragment){
+//            tabLayout.getTabAt(0)?.select()
+//            super.onBackPressed()
+//        }
         super.onBackPressed()
     }
 }

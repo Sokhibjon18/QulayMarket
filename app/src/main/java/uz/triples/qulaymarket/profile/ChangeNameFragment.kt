@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_change_email.view.*
 import kotlinx.android.synthetic.main.fragment_change_name.view.*
+import kotlinx.android.synthetic.main.fragment_change_name.view.back_button
+import kotlinx.android.synthetic.main.fragment_change_name.view.save_button
 import uz.triples.qulaymarket.R
 
 class ChangeNameFragment : Fragment() {
@@ -31,6 +34,10 @@ class ChangeNameFragment : Fragment() {
                 Toast.makeText(requireContext(), "Name is inserted to the database", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_changeNameFragment_to_myProfileDetails)
             }
+        }
+
+        view.back_button.setOnClickListener {
+            findNavController().navigate(R.id.action_changeNameFragment_to_myProfileDetails)
         }
 
         return view

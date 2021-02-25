@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_change_birthday.view.*
 import kotlinx.android.synthetic.main.fragment_change_birthday.view.save_button
-import kotlinx.android.synthetic.main.fragment_change_name.view.*
 import uz.triples.qulaymarket.R
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -74,11 +73,10 @@ class ChangeBirthdayFragment : Fragment() {
             }
         }
 
+        view.back_button.setOnClickListener {
+            findNavController().navigate(R.id.action_changeBirthdayFragment_to_myProfileDetails)
+        }
+
         return view
-    }
-
-    private fun getDateFormat(): String{
-
-        return ""
     }
 }

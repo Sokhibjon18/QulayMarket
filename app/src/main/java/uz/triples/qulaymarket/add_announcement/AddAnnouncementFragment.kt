@@ -1,4 +1,4 @@
-package uz.triples.qulaymarket.profile
+package uz.triples.qulaymarket.add_announcement
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_change_password.view.*
+import kotlinx.android.synthetic.main.fragment_add_announcement.view.*
 import uz.triples.qulaymarket.R
 
-class ChangePasswordFragment : Fragment() {
+class AddAnnouncementFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -21,14 +20,11 @@ class ChangePasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(
-            R.layout.fragment_change_password,
-            container,
-            false
-        )
+        val view = inflater.inflate(R.layout.fragment_add_announcement, container, false)
 
-        view.back_button.setOnClickListener {
-            findNavController().navigate(R.id.action_changePasswordFragment_to_myProfileDetails)
+        view.cancel_button.setOnClickListener {
+            findNavController().navigate(R.id.action_addAnnouncementFragment_to_mainFragment)
+
         }
 
         return view

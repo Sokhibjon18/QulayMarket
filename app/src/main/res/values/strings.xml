@@ -16,4 +16,5 @@
     <string name="info_liked">Sizga yoqqan e’lonlar ustiga like bosing va ular shu yerda ko’rinadi</string>
     <string name="example">Product title here, max length will be 30 may be</string>
     <string name="all_products"><u>Muallifning barcha e` lonlari</u></string>
+    <string name="info_chat">Xabarni qabul qilsangiz yoki yuborsangiz <br></br> shu yerda ko\'rinadi</string>
 </resources>

@@ -42,6 +42,10 @@ class MyProfileDetails : Fragment() {
             findNavController().navigate(R.id.action_myProfileDetails_to_changePasswordFragment)
         }
 
+        view.back_button.setOnClickListener {
+            findNavController().navigate(R.id.action_myProfileDetails_to_profileFragment)
+        }
+
         return view
     }
 }
