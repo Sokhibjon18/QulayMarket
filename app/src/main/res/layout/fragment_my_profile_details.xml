@@ -57,9 +57,10 @@
             android:layout_height="1dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_image"
         android:src="@drawable/ic_man_user"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@id/actionBar"
         android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
