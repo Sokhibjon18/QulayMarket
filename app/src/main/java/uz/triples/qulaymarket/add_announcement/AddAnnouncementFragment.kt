@@ -24,7 +24,6 @@ class AddAnnouncementFragment : Fragment() {
 
         view.cancel_button.setOnClickListener {
             findNavController().navigate(R.id.action_addAnnouncementFragment_to_mainFragment)
-
         }
 
         return view

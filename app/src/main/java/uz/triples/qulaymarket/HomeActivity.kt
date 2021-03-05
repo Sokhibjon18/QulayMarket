@@ -106,7 +106,7 @@ class HomeActivity : AppCompatActivity() {
 
 //        else if(currentFragment == R.id.profileFragment || currentFragment == R.id.addAnnouncementFragment
 //            || currentFragment == R.id.likedFragment || currentFragment == R.id.chatNotFoundFragment){
-//            tabLayout.getTabAt(0)?.select()
+//            this.mainContainerNavigator(R.id.mainFragment)
 //            super.onBackPressed()
 //        }
         super.onBackPressed()
