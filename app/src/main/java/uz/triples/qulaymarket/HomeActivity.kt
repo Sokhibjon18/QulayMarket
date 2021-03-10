@@ -2,30 +2,24 @@ package uz.triples.qulaymarket
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import androidx.core.view.iterator
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
-    private val mainContainer: NavController by lazy { findNavController(R.id.fragmentContainer) }
-
-    private val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
-        if(destination.id == R.id.mainFragment){
-            tabLayout.getTabAt(0)?.select()
-        } else if(destination.id == R.id.likedFragment){
-            tabLayout.getTabAt(1)?.select()
-        } else if(destination.id == R.id.addAnnouncementFragment){
-            tabLayout.getTabAt(2)?.select()
-        } else if(destination.id == R.id.chatNotFoundFragment){
-            tabLayout.getTabAt(3)?.select()
-        } else if(destination.id == R.id.profileFragment){
-            tabLayout.getTabAt(4)?.select()
-        }
-    }
+    private val mainContainer: NavController by lazy {
+        val controller = supportFragmentManager.findFragmentById(R.id.fragmentContainer)!!
+        controller.findNavController() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +28,16 @@ class HomeActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_home)
 
-        initializeTabOnClick()
-    }
+        nav_view.setupWithNavController(mainContainer)
 
-    override fun onResume() {
-        super.onResume()
-        mainContainer.addOnDestinationChangedListener(listener)
-    }
+        mainContainer.addOnDestinationChangedListener { controller, destination, arguments ->
+            for(menuItem in nav_view.menu.iterator()){
+                menuItem.isEnabled = true
+            }
 
-    override fun onPause() {
-        mainContainer.removeOnDestinationChangedListener(listener)
-        super.onPause()
+            val menu = nav_view.menu.findItem(destination.id)
+            menu?.isEnabled = false
+        }
     }
 
     private fun loadLanguage(){
@@ -58,33 +51,6 @@ class HomeActivity : AppCompatActivity() {
             config,
             baseContext.resources.displayMetrics
         )
-    }
-
-    private fun initializeTabOnClick() {
-        tabLayout.addOnTabSelectedListener(object :
-            TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab!!.position) {
-                    0 -> mainContainerNavigator(R.id.mainFragment)
-                    1 -> mainContainerNavigator(R.id.likedFragment)
-                    2 -> mainContainerNavigator(R.id.addAnnouncementFragment)
-                    3 -> mainContainerNavigator(R.id.chatNotFoundFragment)
-                    4 -> mainContainerNavigator(R.id.profileFragment)
-                }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-        })
-    }
-
-    private fun mainContainerNavigator(id: Int) {
-        mainContainer.navigate(id)
     }
 
     override fun onBackPressed() {
@@ -103,12 +69,13 @@ class HomeActivity : AppCompatActivity() {
                 super.onBackPressed()
             }
         }
-
-//        else if(currentFragment == R.id.profileFragment || currentFragment == R.id.addAnnouncementFragment
-//            || currentFragment == R.id.likedFragment || currentFragment == R.id.chatNotFoundFragment){
-//            this.mainContainerNavigator(R.id.mainFragment)
-//            super.onBackPressed()
-//        }
-        super.onBackPressed()
+        else if(currentFragment == R.id.profileFragment || currentFragment == R.id.addAnnouncementFragment
+            || currentFragment == R.id.likedFragment || currentFragment == R.id.chatNotFoundFragment){
+            nav_view.findViewById<View>(R.id.mainFragment).performClick()
+        } else if(currentFragment == R.id.myProfileDetails){
+            mainContainer.navigate(R.id.action_myProfileDetails_to_profileFragment)
+        }else{
+            super.onBackPressed()
+        }
     }
 }

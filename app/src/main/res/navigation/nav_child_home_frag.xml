@@ -26,5 +26,6 @@
     <fragment
         android:id="@+id/notFoundFragment"
         android:name="uz.triples.qulaymarket.home.NotFoundFragment"
-        android:label="NotFoundFragment" />
+        android:label="NotFoundFragment"
+        tools:layout="@layout/fragment_not_found"/>
 </navigation>

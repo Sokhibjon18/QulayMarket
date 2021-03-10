@@ -11,7 +11,16 @@ import kotlinx.android.synthetic.main.fragment_change_email.view.*
 import kotlinx.android.synthetic.main.fragment_change_name.view.*
 import kotlinx.android.synthetic.main.fragment_change_name.view.back_button
 import kotlinx.android.synthetic.main.fragment_change_name.view.save_button
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import uz.triples.qulaymarket.R
+import uz.triples.qulaymarket.database.Cache
+import uz.triples.qulaymarket.network.NetWorkInterface
+import uz.triples.qulaymarket.network.Network
+import uz.triples.qulaymarket.network.pojo_objects.GetUserResponse
 
 class ChangeNameFragment : Fragment() {
 
@@ -31,8 +40,7 @@ class ChangeNameFragment : Fragment() {
             if(text.isBlank()){
                 Toast.makeText(requireContext(), "Ismingizni kiriting", Toast.LENGTH_SHORT).show()
             } else{
-                Toast.makeText(requireContext(), "Name is inserted to the database", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_changeNameFragment_to_myProfileDetails)
+                updateName(text)
             }
         }
 
@@ -41,5 +49,25 @@ class ChangeNameFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun updateName(text: String) {
+        val service = Network.getInstance().create(NetWorkInterface::class.java)
+        val updateName = service.updateUserName(text, Cache.getToken())
+
+        updateName.enqueue(object: Callback<GetUserResponse>{
+            override fun onResponse(
+                call: Call<GetUserResponse>,
+                response: Response<GetUserResponse>
+            ) {
+                Cache.setUserDetails(response.body()?.result ?: Cache.getUserDetails())
+                findNavController().navigate(R.id.action_changeNameFragment_to_myProfileDetails)
+            }
+
+            override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

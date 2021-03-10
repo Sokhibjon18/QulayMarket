@@ -23,8 +23,10 @@ class AddAnnouncementFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_announcement, container, false)
 
         view.cancel_button.setOnClickListener {
-            findNavController().navigate(R.id.action_addAnnouncementFragment_to_mainFragment)
+            requireActivity().onBackPressed()
         }
+
+
 
         return view
     }

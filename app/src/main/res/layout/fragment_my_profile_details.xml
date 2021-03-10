@@ -1,385 +1,403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".profile.MyProfileDetails">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/actionBar"
+    <data>
+        <variable
+            name="viewModel"
+            type="uz.triples.qulaymarket.profile.my_details.MyDetailsViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHeight_percent="0.10"
-        android:layout_height="0dp">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".profile.my_details.MyProfileDetails">
 
-        <LinearLayout
-            android:id="@+id/back_button"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/actionBar"
+            android:layout_width="match_parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center"
-            android:paddingStart="24dp"
-            android:paddingEnd="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <ImageView
-                app:layout_constraintVertical_bias="0.5"
-                android:src="@drawable/ic_back"
-                app:layout_constraintDimensionRatio="h,1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.10"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:id="@+id/back_button"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
+                    app:layout_constraintVertical_bias="0.5"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintDimensionRatio="h,1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
+            </LinearLayout>
+
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Profilim"
+                android:textStyle="bold"
+                android:textColor="#223263"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
-        </LinearLayout>
+                android:background="#EBF0FF"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Profilim"
-            android:textStyle="bold"
-            android:textColor="#223263"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <View
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image"
+            android:src="@drawable/ic_man_user"
+            setUserImage="@{viewModel.user}"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toBottomOf="@id/actionBar"
+            android:layout_marginTop="35dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="#EBF0FF"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <Button
+            android:id="@+id/upload_image_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="106dp"
+            android:background="@color/lightBlue"
+            android:textStyle="bold"
+            android:text="Rasm yuklash"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/user_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/name_container"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@id/upload_image_button"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user_image"
-        android:src="@drawable/ic_man_user"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toBottomOf="@id/actionBar"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="80dp"
-        android:layout_height="80dp"/>
+            android:orientation="horizontal"
+            android:layout_height="48dp">
 
-    <Button
-        android:id="@+id/upload_image_button"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="106dp"
-        android:background="@color/lightBlue"
-        android:textStyle="bold"
-        android:text="Rasm yuklash"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/user_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/name_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_person_1"
+                android:layout_gravity="center"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/name_container"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/upload_image_button"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="48dp">
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/name_img"
+                android:text="Ismingiz"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#223263"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/name_img"
-            app:layout_constraintTop_toTopOf="parent"
+            <ImageView
+                android:id="@+id/name_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_vector"
+                android:layout_gravity="bottom|end"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
+
+            <TextView
+                android:id="@+id/name"
+                setUserName="@{viewModel.user}"
+                android:textColor="#9098B1"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/name_back"
+                android:layout_width="wrap_content"
+                android:textAlignment="textEnd"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_person_1"
-            android:layout_gravity="center"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/name_img"
-            android:text="Ismingiz"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#223263"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/name_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_vector"
-            android:layout_gravity="bottom|end"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
+            android:id="@+id/birthday_container"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@id/name_container"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="48dp">
 
-        <TextView
-            android:id="@+id/name"
-            android:text="9989912345667"
-            android:textColor="#9098B1"
-            android:textSize="14sp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/name_back"
-            android:layout_width="wrap_content"
-            android:textAlignment="textEnd"
-            android:maxWidth="200dp"
-            android:maxLines="1"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/birthday_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_birthday"
+                android:layout_gravity="center"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/birthday_img"
+                android:text="Tug'ilgan kuningiz"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#223263"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/birthday_container"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/name_container"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="48dp">
+            <ImageView
+                android:id="@+id/birthday_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_vector"
+                android:layout_gravity="bottom|end"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
 
-        <ImageView
-            android:id="@+id/birthday_img"
-            app:layout_constraintTop_toTopOf="parent"
+            <TextView
+                android:id="@+id/birthday"
+                setUserBirthDate="@{viewModel.user}"
+                android:textColor="#9098B1"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/birthday_back"
+                android:layout_width="wrap_content"
+                android:textAlignment="textEnd"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_birthday"
-            android:layout_gravity="center"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/birthday_img"
-            android:text="Tug'ilgan kuningiz"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="#223263"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/birthday_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_vector"
-            android:layout_gravity="bottom|end"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
+            android:id="@+id/email_container"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@id/birthday_container"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="48dp">
 
-        <TextView
-            android:id="@+id/birthday"
-            android:text="12-12-2000"
-            android:textColor="#9098B1"
-            android:textSize="14sp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/birthday_back"
-            android:layout_width="wrap_content"
-            android:textAlignment="textEnd"
-            android:maxWidth="200dp"
-            android:maxLines="1"
-            android:layout_height="wrap_content"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/email_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_email"
+                android:layout_gravity="center"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/email_container"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/birthday_container"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="48dp">
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/email_img"
+                android:text="Email"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#223263"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/email_img"
-            app:layout_constraintTop_toTopOf="parent"
+            <ImageView
+                android:id="@+id/email_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_vector"
+                android:layout_gravity="bottom|end"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
+
+            <TextView
+                android:id="@+id/email"
+                setUserEmail="@{viewModel.user}"
+                android:textColor="#9098B1"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/email_back"
+                android:layout_width="wrap_content"
+                android:textAlignment="textEnd"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_email"
-            android:layout_gravity="center"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/email_img"
-            android:text="Email"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="#223263"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/email_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_vector"
-            android:layout_gravity="bottom|end"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
+            android:id="@+id/phone_number_container"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@id/email_container"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="48dp">
 
-        <TextView
-            android:id="@+id/email"
-            android:text="info@qulaymarket.uz"
-            android:textColor="#9098B1"
-            android:textSize="14sp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/email_back"
-            android:layout_width="wrap_content"
-            android:textAlignment="textEnd"
-            android:maxWidth="200dp"
-            android:maxLines="1"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/phone_number_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_phone_number"
+                android:layout_gravity="center"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/phone_number_img"
+                android:text="Telefon raqam"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#223263"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/phone_number_container"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/email_container"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="48dp">
+            <ImageView
+                android:id="@+id/phone_number_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_vector"
+                android:layout_gravity="bottom|end"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
 
-        <ImageView
-            android:id="@+id/phone_number_img"
-            app:layout_constraintTop_toTopOf="parent"
+            <TextView
+                android:id="@+id/phone_number"
+                setUserPhone="@{viewModel.user}"
+                android:textColor="#9098B1"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/phone_number_back"
+                android:layout_width="wrap_content"
+                android:textAlignment="textEnd"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_phone_number"
-            android:layout_gravity="center"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/phone_number_img"
-            android:text="Telefon raqam"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#223263"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/phone_number_back"
             app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/password_container"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_container"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="48dp">
+
+            <ImageView
+                android:id="@+id/password_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_change_password"
+                android:layout_gravity="center"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
+
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/password_img"
+                android:text="Parolni o'zgartirish"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#223263"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/password_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_vector"
+                android:layout_gravity="bottom|end"
+                android:layout_width="19dp"
+                android:layout_height="19dp"/>
+
+            <TextView
+                android:id="@+id/password"
+                android:text="●●●●●●●●●●●●●"
+                android:textColor="#9098B1"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/password_back"
+                android:layout_width="wrap_content"
+                android:textAlignment="textEnd"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.gmail.samehadar.iosdialog.CamomileSpinner
+            android:id="@+id/refresh_spinner"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:spinnerColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_vector"
-            android:layout_gravity="bottom|end"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            android:id="@+id/phone_number"
-            android:text="(998)99 123-45-56"
-            android:textColor="#9098B1"
-            android:textSize="14sp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/phone_number_back"
-            android:layout_width="wrap_content"
-            android:textAlignment="textEnd"
-            android:maxWidth="200dp"
-            android:maxLines="1"
-            android:layout_height="wrap_content"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/password_container"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/phone_number_container"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="48dp">
-
-        <ImageView
-            android:id="@+id/password_img"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_change_password"
-            android:layout_gravity="center"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/password_img"
-            android:text="Parolni o'zgartirish"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#223263"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/password_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_vector"
-            android:layout_gravity="bottom|end"
-            android:layout_width="19dp"
-            android:layout_height="19dp"/>
-
-        <TextView
-            android:id="@+id/password"
-            android:text="●●●●●●●●●●●●●"
-            android:textColor="#9098B1"
-            android:textSize="14sp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/password_back"
-            android:layout_width="wrap_content"
-            android:textAlignment="textEnd"
-            android:maxWidth="200dp"
-            android:maxLines="1"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

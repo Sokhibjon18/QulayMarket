@@ -1,4 +1,4 @@
-package uz.triples.qulaymarket
+package uz.triples.qulaymarket.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -42,3 +42,5 @@ fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
+
+enum class Status {LOADING, ERROR, DONE}

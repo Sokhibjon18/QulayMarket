@@ -1,83 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    android:layout_margin="4dp"
-    app:cardUseCompatPadding="true">
+<layout>
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="4dp"
+        app:cardUseCompatPadding="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageItemGoodsRV"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/test_img1"
-            app:layout_constraintDimensionRatio="h,1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/circleImageView" />
+            android:layout_height="match_parent"
+            android:padding="12dp">
 
-        <TextView
-            android:id="@+id/titleGoodsRV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            app:layout_constraintEnd_toStartOf="@id/liked"
-            android:text="Уголок в стиле хай-тек"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageItemGoodsRV" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageItemGoodsRV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test_img1"
+                app:layout_constraintDimensionRatio="h,1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
 
-        <ImageView
-            android:id="@+id/liked"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_unlike"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/titleGoodsRV" />
+            <TextView
+                android:id="@+id/titleGoodsRV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                app:layout_constraintEnd_toStartOf="@id/liked"
+                android:text="Уголок в стиле хай-тек"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageItemGoodsRV" />
 
-        <TextView
-            android:id="@+id/priceGoodRV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2 500 000 so` m"
-            android:textColor="@color/magenta"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/titleGoodsRV"
-            app:layout_constraintTop_toBottomOf="@id/titleGoodsRV" />
+            <ImageView
+                android:id="@+id/liked"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_unlike"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/titleGoodsRV" />
 
-        <TextView
-            android:id="@+id/locationGoodsRV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Andijon"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/priceGoodRV"
-            app:layout_constraintTop_toBottomOf="@id/priceGoodRV" />
+            <TextView
+                android:id="@+id/priceGoodRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 500 000 so` m"
+                android:textColor="@color/magenta"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/titleGoodsRV"
+                app:layout_constraintTop_toBottomOf="@id/titleGoodsRV" />
 
-        <TextView
-            android:id="@+id/lastSeenGoodsRV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2 noy"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/priceGoodRV"
-            app:layout_constraintTop_toBottomOf="@id/locationGoodsRV" />
+            <TextView
+                android:id="@+id/locationGoodsRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Andijon"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/priceGoodRV"
+                app:layout_constraintTop_toBottomOf="@id/priceGoodRV" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/lastSeenGoodsRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 noy"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/priceGoodRV"
+                app:layout_constraintTop_toBottomOf="@id/locationGoodsRV" />
 
-</com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

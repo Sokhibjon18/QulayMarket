@@ -1,6 +1,7 @@
 package uz.triples.qulaymarket.app
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
@@ -12,7 +13,7 @@ import uz.triples.qulaymarket.database.Cache
 class Application : Application() {
     override fun onCreate() {
         super.onCreate()
-        Cache.initialize(applicationContext)
+        Cache.initialize(applicationContext.getSharedPreferences("Cache", Context.MODE_PRIVATE))
 
         fff()
     }

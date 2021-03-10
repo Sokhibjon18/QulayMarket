@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/backLiked"
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="16dp"
@@ -27,6 +27,7 @@
             android:src="@drawable/ic_left" />
 
         <TextView
+            android:id="@+id/productTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -91,6 +92,7 @@
                 app:layout_constraintTop_toBottomOf="@id/indicatorProduct">
 
                 <TextView
+                    android:id="@+id/titleProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
@@ -99,6 +101,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/priceProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="100 y.e"
@@ -133,12 +136,13 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/descriptionProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/example"
                     android:textColor="@color/grey" />
 
-                <LinearLayout
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="12dp"
@@ -146,6 +150,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/ownerContainer"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
 

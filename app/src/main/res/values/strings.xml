@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Qulay Market</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -17,4 +17,7 @@
     <string name="example">Product title here, max length will be 30 may be</string>
     <string name="all_products"><u>Muallifning barcha e` lonlari</u></string>
     <string name="info_chat">Xabarni qabul qilsangiz yoki yuborsangiz <br></br> shu yerda ko\'rinadi</string>
+
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">30sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">30sp</dimen>
 </resources>

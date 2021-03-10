@@ -11,40 +11,36 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_mainFragment_to_likedFragment"
-            app:destination="@id/likedFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_productFragment"
-            app:destination="@id/productFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_addAnnouncementFragment"
-            app:destination="@id/addAnnouncementFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_chatNotFoundFragment"
-            app:destination="@id/chatNotFoundFragment" />
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/likedFragment"
         android:name="uz.triples.qulaymarket.liked.LikedFragment"
         android:label="fragment_liked"
-        tools:layout="@layout/fragment_liked" >
-        <action
-            android:id="@+id/action_likedFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_liked" />
     <fragment
         android:id="@+id/productFragment"
         android:name="uz.triples.qulaymarket.product.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="uz.triples.qulaymarket.profile.ProfileFragment"
+        android:name="uz.triples.qulaymarket.profile.registered_profile.RegisteredProfileFragment"
         android:label="fragment_profile_registered"
         tools:layout="@layout/fragment_profile_registered" >
         <action
@@ -53,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/myProfileDetails"
-        android:name="uz.triples.qulaymarket.profile.MyProfileDetails"
+        android:name="uz.triples.qulaymarket.profile.my_details.MyProfileDetails"
         android:label="fragment_my_profile_details"
         tools:layout="@layout/fragment_my_profile_details" >
         <action
@@ -136,11 +132,7 @@
         android:id="@+id/addAnnouncementFragment"
         android:name="uz.triples.qulaymarket.add_announcement.AddAnnouncementFragment"
         android:label="fragment_add_announcement"
-        tools:layout="@layout/fragment_add_announcement" >
-        <action
-            android:id="@+id/action_addAnnouncementFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_announcement" />
     <fragment
         android:id="@+id/chatNotFoundFragment"
         android:name="uz.triples.qulaymarket.chat.ChatNotFoundFragment"

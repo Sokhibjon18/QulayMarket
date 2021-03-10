@@ -2,6 +2,7 @@ package uz.triples.qulaymarket.product
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,8 @@ import uz.triples.qulaymarket.home.adapters.GoodsRVA
 import uz.triples.qulaymarket.models.Author
 import uz.triples.qulaymarket.models.Details
 import uz.triples.qulaymarket.models.Goods
+import uz.triples.qulaymarket.network.Network
+import uz.triples.qulaymarket.network.pojo_objects.Announcement
 import uz.triples.qulaymarket.product.adapter.DetailsRVA
 import uz.triples.qulaymarket.product.adapter.ImageVPA
 
@@ -21,21 +24,24 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     private lateinit var adapter: GoodsRVA
     private lateinit var adapterDetails: DetailsRVA
     private lateinit var adapterVP: ImageVPA
-    private var listGoods: List<Goods> = listOf()
-    private var listImage: List<Int> = listOf()
+    private var listGoods: List<Announcement> = listOf()
+    private var listImage: List<String> = listOf()
     private var listDetails: List<Details> = listOf()
+    private lateinit var announcement: Announcement
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        unrealInsertion()
+        announcement = requireArguments().getParcelable("announcement")!!
+
+        loadData()
 
         adapter = GoodsRVA(requireContext(), object : ProductClicked {
-            override fun itemClicked() {
-                findNavController().navigate(R.id.productFragment)
+            override fun itemClicked(announcement: Announcement) {
+                findNavController().navigate(R.id.productFragment, bundleOf("announcement" to announcement))
             }
         }, true)
-        adapterVP = ImageVPA(listImage)
+        adapterVP = ImageVPA(requireContext(), listImage)
         adapterDetails = DetailsRVA(requireContext())
 
         detailsRVProduct.layoutManager = LinearLayoutManager(requireContext())
@@ -54,59 +60,40 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
         adapter.submitList(listGoods)
         adapterDetails.submitList(listDetails)
+
+        back_button.setOnClickListener{
+            findNavController().navigate(R.id.action_productFragment_to_mainFragment)
+        }
     }
 
-    private fun unrealInsertion() {
-        listDetails = listDetails + Details("Shahar: ", "Toshkent")
-        listDetails = listDetails + Details("Telefon markasi: ", "Xiaomi")
-        listDetails = listDetails + Details("Rangi: ", "Qora")
-        listDetails = listDetails + Details("Holati: ", "Ishlatilgan")
-        listDetails = listDetails + Details("Sotuvchi: ", "Jismoniy shaxs")
+    private fun loadData(){
+        for (i in 0 until (announcement.imagesCount ?: 0)){
+            listImage = listImage + "${Network.baseUrl}/announcement/image?announcement_id=${announcement.id}&image_id=${i+1}"
+        }
+        val views = "${announcement.views}"
+        viewsCount.text = views
 
-        listImage = listImage + R.drawable.test_img6
-        listImage = listImage + R.drawable.test_img6
-        listImage = listImage + R.drawable.test_img6
-        listImage = listImage + R.drawable.test_img6
+        val id = "ID: ${announcement.id}"
+        productIDProduct.text = id
 
-        listGoods = listGoods + Goods(
-            "7 fev",
-            135000,
-            Author("+998916654355", "1 fev", "Sokhibjon", "Toshkent", 1),
-            "sum",
-            "Toshkent shahar, Mirzo Ulug’bek tumani",
-            R.drawable.test_img2,
-            "Уголок в стиле хай-тек  универсал",
-            124
-        )
-        listGoods = listGoods + Goods(
-            "9 fev",
-            135000,
-            Author("+998886618866", "5 fev", "Alijon", "Andijon", 1),
-            "sum",
-            "Toshkent shahar, Mirzo Ulug’bek tumani",
-            R.drawable.test_img3,
-            "Уголок в стиле хай-тек  универсал",
-            14
-        )
-        listGoods = listGoods + Goods(
-            "7 fev",
-            3254000,
-            Author("+998916654355", "1 fev", "Sokhibjon", "Toshkent", 1),
-            "sum",
-            "Toshkent shahar, Mirzo Ulug’bek tumani",
-            R.drawable.test_img1,
-            "Уголок в стиле хай-тек  универсал",
-            124
-        )
-        listGoods = listGoods + Goods(
-            "7 fev",
-            135000,
-            Author("+998916654355", "1 fev", "Sokhibjon", "Toshkent", 1),
-            "sum",
-            "Toshkent shahar, Mirzo Ulug’bek tumani",
-            R.drawable.test_img4,
-            "Уголок в стиле хай-тек  универсал",
-            124
-        )
+        val price = "${announcement.price?.toInt() ?: ""} so'm"
+        priceProduct.text = price
+
+        val title = "${announcement.title}"
+        titleProduct.text = title
+        productTitle.text = title
+
+        val description = "${announcement.description}"
+        descriptionProduct.text = description
+
+        if(announcement.owner == null){
+            ownerContainer.visibility = View.GONE
+        } else{
+            ownerContainer.visibility = View.VISIBLE
+            userNameProduct.text = announcement.owner!!.name
+            locationProducts.text = announcement.location?.valueUz
+        }
+
+
     }
 }

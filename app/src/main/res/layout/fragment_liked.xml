@@ -9,7 +9,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="78dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="12dp"
-            android:text="Xech narsa topilmadi"
+            android:text="Hech narsa topilmadi"
             android:textSize="24sp"
             android:textStyle="bold" />
 

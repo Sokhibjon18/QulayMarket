@@ -3,6 +3,7 @@ package uz.triples.qulaymarket.login
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import uz.triples.qulaymarket.R
@@ -22,5 +23,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             }
 
         }.start()
+
+
     }
 }

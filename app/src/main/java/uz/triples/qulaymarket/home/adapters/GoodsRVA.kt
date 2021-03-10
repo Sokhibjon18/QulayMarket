@@ -1,35 +1,51 @@
 package uz.triples.qulaymarket.home.adapters
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.rv_goods.view.*
-import uz.triples.qulaymarket.models.Goods
-import uz.triples.qulaymarket.R
+import okhttp3.*
+import uz.triples.qulaymarket.*
 import uz.triples.qulaymarket.`interface`.ProductClicked
+import uz.triples.qulaymarket.databinding.RvGoodsBinding
+import uz.triples.qulaymarket.databinding.RvGoodsInRelatedBinding
+import uz.triples.qulaymarket.network.Network.baseUrl
+import uz.triples.qulaymarket.network.pojo_objects.Announcement
+import java.io.IOException
+import java.io.InputStream
+import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class GoodsRVA(
     val context: Context,
     private val productClicked: ProductClicked,
     private val related: Boolean
 ) :
-    ListAdapter<Goods, GoodsRVA.VH>(DiffUtilCallBack()) {
+    ListAdapter<Announcement, GoodsRVA.VH>(DiffUtilCallBack()) {
 
-    class DiffUtilCallBack : DiffUtil.ItemCallback<Goods>() {
+    private var bindingRelated: RvGoodsInRelatedBinding? = null
+    private var binding: RvGoodsBinding? = null
+
+    class DiffUtilCallBack : DiffUtil.ItemCallback<Announcement>() {
         override fun areItemsTheSame(
-            oldItem: Goods,
-            newItem: Goods
+            oldItem: Announcement,
+            newItem: Announcement
         ): Boolean {
             return true
         }
 
         override fun areContentsTheSame(
-            oldItem: Goods,
-            newItem: Goods
+            oldItem: Announcement,
+            newItem: Announcement
         ): Boolean {
             return oldItem.id == newItem.id
                     && oldItem.title == newItem.title
@@ -41,30 +57,45 @@ class GoodsRVA(
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        return if (related)
-            VH(
-                LayoutInflater.from(context)
-                    .inflate(R.layout.rv_goods_in_related, parent, false)
-            )
-            else
-            VH(
-                LayoutInflater.from(context)
-                    .inflate(R.layout.rv_goods, parent, false)
-            )
+        return if (related){
+            bindingRelated = RvGoodsInRelatedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            VH(bindingRelated!!.root)
+        } else{
+            binding = RvGoodsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            VH(binding!!.root)
+        }
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val itemView = holder.itemView
         val item = getItem(position)
-        itemView.imageItemGoodsRV.setImageResource(item.id!!)
-        itemView.titleGoodsRV.text = item.title
-        itemView.priceGoodRV.text = item.price.toString()
-        itemView.locationGoodsRV.text = item.location
-        itemView.lastSeenGoodsRV.text = item.date
+//        Glide.with(context).load("$baseUrl/announcement/image?announcement_id=${item.id}&image_id=1").into(itemView.imageItemGoodsRV)
+//        itemView.titleGoodsRV.text = item.title
+//        itemView.priceGoodRV.text = item.price.toString()
+//        itemView.locationGoodsRV.text = item.location?.valueUz
+//        itemView.lastSeenGoodsRV.apply {
+//            val date = convertLongToTime(item.datetime?.toLong()!!)
+//            this.text = date
+//        }
 
-        itemView.setOnClickListener {
-            productClicked.itemClicked()
+        if(related){
+            TODO()
+        } else{
+            binding?.let {
+                it.announcement = item
+
+                it.root.setOnClickListener {
+                    productClicked.itemClicked(getItem(position))
+                }
+
+                it.executePendingBindings()
+            }
         }
     }
+
+//    private fun convertLongToTime(time: Long): String {
+//        val date = Date(time)
+//        val format = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.ROOT)
+//        return format.format(date)
+//    }
 
 }

@@ -17,11 +17,11 @@ import retrofit2.Response
 import uz.triples.qulaymarket.HomeActivity
 import uz.triples.qulaymarket.R
 import uz.triples.qulaymarket.database.Cache
-import uz.triples.qulaymarket.gone
 import uz.triples.qulaymarket.network.NetWorkInterface
 import uz.triples.qulaymarket.network.Network
 import uz.triples.qulaymarket.network.pojo_objects.LoginWithEmailOrPhoneResponse
-import uz.triples.qulaymarket.visible
+import uz.triples.qulaymarket.utils.gone
+import uz.triples.qulaymarket.utils.visible
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -130,6 +130,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                 if (res?.ok == true) {
                                     navigateToHomeActivity()
                                     Cache.setLoggedInStatus(true)
+                                    Cache.setUserPassword(password)
+                                    Cache.setToken(res.result ?: "NoToken")
                                 } else {
                                     Toast.makeText(
                                         requireContext(),
