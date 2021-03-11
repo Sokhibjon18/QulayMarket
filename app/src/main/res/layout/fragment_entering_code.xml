@@ -1,284 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".login.EnteringCodeFragment">
+<layout>
 
-    <TextView
-        android:id="@+id/timer"
+    <data>
+        <variable
+            name="viewModel"
+            type="uz.triples.qulaymarket.login.entering_code.EnteringCodeFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/_00_30"
-        android:textColor="@color/darkBlue"
-        android:textSize="42sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/text1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="32dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/kodni_kiriting"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/numberYields"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timer" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/numberYields"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/resend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text1">
+        android:layout_height="match_parent"
+        tools:context=".login.entering_code.EnteringCodeFragment">
 
         <TextView
-            android:id="@+id/num1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/entering_code_yield"
+            android:id="@+id/timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/lightBlue"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="w,1"
-            app:layout_constraintEnd_toStartOf="@+id/num2"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            android:text="@{viewModel.timer}"
+            android:textColor="@color/darkBlue"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/text1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.15" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/num2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/entering_code_yield"
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="32dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
-            android:textColor="@color/lightBlue"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/num3"
-            app:layout_constraintStart_toEndOf="@+id/num1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.15" />
-
-        <TextView
-            android:id="@+id/num3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/entering_code_yield"
-            android:gravity="center"
-            android:textColor="@color/lightBlue"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/num4"
-            app:layout_constraintStart_toEndOf="@+id/num2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.15" />
-
-        <TextView
-            android:id="@+id/num4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/entering_code_yield"
-            android:gravity="center"
-            android:textColor="@color/lightBlue"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/kodni_kiriting"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/numberYields"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/num3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.15" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timer" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/numberYields"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/resend"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text1">
+
+            <TextView
+                android:id="@+id/num1"
+                android:layout_width="0dp"
+                android:text="@{viewModel.num1}"
+                android:layout_height="0dp"
+                android:background="@drawable/entering_code_yield"
+                android:gravity="center"
+                android:textColor="@color/lightBlue"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,1"
+                app:layout_constraintEnd_toStartOf="@+id/num2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.15" />
+
+            <TextView
+                android:id="@+id/num2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{viewModel.num2}"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/entering_code_yield"
+                android:gravity="center"
+                android:textColor="@color/lightBlue"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/num3"
+                app:layout_constraintStart_toEndOf="@+id/num1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.15" />
+
+            <TextView
+                android:id="@+id/num3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{viewModel.num3}"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/entering_code_yield"
+                android:gravity="center"
+                android:textColor="@color/lightBlue"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/num4"
+                app:layout_constraintStart_toEndOf="@+id/num2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.15" />
+
+            <TextView
+                android:id="@+id/num4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{viewModel.num4}"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/entering_code_yield"
+                android:gravity="center"
+                android:textColor="@color/lightBlue"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/num3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.15" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/lightGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/one" />
+
+        <Button
+            android:id="@+id/zero"
+            android:layout_width="0dp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageButton
+            android:id="@+id/erase"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:backgroundTint="@color/white"
+            android:src="@android:drawable/ic_input_delete"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            android:tint="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/zero"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/eight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:backgroundTint="@color/white"
+            android:text="8"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/zero"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/zero"
+            app:layout_constraintStart_toStartOf="@id/zero"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/seven"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:backgroundTint="@color/white"
+            android:text="7"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/zero"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toStartOf="@id/eight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/nine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="9"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            app:layout_constraintBottom_toTopOf="@id/erase"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/erase"
+            app:layout_constraintStart_toStartOf="@id/erase"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/five"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="5"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/eight"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/zero"
+            app:layout_constraintStart_toStartOf="@id/zero"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/four"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:backgroundTint="@color/white"
+            android:text="4"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/seven"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/seven"
+            app:layout_constraintStart_toStartOf="@id/seven"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/six"
+            android:layout_width="0dp"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="6"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/nine"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/erase"
+            app:layout_constraintStart_toStartOf="@id/erase"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/two"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="2"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/five"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/zero"
+            app:layout_constraintStart_toStartOf="@id/zero"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/one"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="1"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/four"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/seven"
+            app:layout_constraintStart_toStartOf="@id/seven"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <Button
+            android:id="@+id/three"
+            android:onClick="@{(view)->viewModel.numClicked(view)}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            android:text="3"
+            android:textColor="@color/magenta"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/six"
+            app:layout_constraintDimensionRatio="h, 0.5"
+            app:layout_constraintEnd_toEndOf="@id/erase"
+            app:layout_constraintStart_toStartOf="@id/erase"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/resend"
+            android:onClick="@{(view)->viewModel.onResendClick(view)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/restart"
+            android:textColor="@color/darkBlue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/two"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/lightGrey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/one" />
-
-    <Button
-        android:id="@+id/zero"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="0"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <ImageButton
-        android:id="@+id/erase"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:src="@android:drawable/ic_input_delete"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        android:tint="@color/grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/zero"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/eight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="8"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/zero"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/zero"
-        app:layout_constraintStart_toStartOf="@id/zero"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/seven"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="7"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/zero"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toStartOf="@id/eight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/nine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="9"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/erase"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/erase"
-        app:layout_constraintStart_toStartOf="@id/erase"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/five"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="5"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/eight"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/zero"
-        app:layout_constraintStart_toStartOf="@id/zero"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/fore"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="4"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/seven"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/seven"
-        app:layout_constraintStart_toStartOf="@id/seven"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/six"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="6"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/nine"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/erase"
-        app:layout_constraintStart_toStartOf="@id/erase"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/two"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="2"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/five"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/zero"
-        app:layout_constraintStart_toStartOf="@id/zero"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/one"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="1"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/fore"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/seven"
-        app:layout_constraintStart_toStartOf="@id/seven"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/three"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        android:text="3"
-        android:textColor="@color/magenta"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/six"
-        app:layout_constraintDimensionRatio="h, 0.5"
-        app:layout_constraintEnd_toEndOf="@id/erase"
-        app:layout_constraintStart_toStartOf="@id/erase"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <TextView
-        android:id="@+id/resend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/restart"
-        android:textColor="@color/darkBlue"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/two"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

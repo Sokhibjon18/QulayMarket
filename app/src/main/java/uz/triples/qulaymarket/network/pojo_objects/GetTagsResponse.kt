@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 data class GetTagsResponse(
 
 	@field:SerializedName("result")
-	val result: List<ResultItem?>? = null,
+	val result: List<Tags>? = null,
 
 	@field:SerializedName("ok")
 	val ok: Boolean? = null
 )
 
-data class ResultItem(
+data class Tags(
 
 	@field:SerializedName("value_uz")
 	val valueUz: String? = null,

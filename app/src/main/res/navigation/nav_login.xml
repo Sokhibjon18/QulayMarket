@@ -7,34 +7,59 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="uz.triples.qulaymarket.login.LoginFragment"
+        android:name="uz.triples.qulaymarket.login.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_enteringCodeFragment"
-            app:destination="@id/enteringCodeFragment" />
+            app:destination="@id/enteringCodeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
     <fragment
         android:id="@+id/settingPasswordFragment"
         android:name="uz.triples.qulaymarket.login.SettingPasswordFragment"
         android:label="fragment_setting_password"
-        tools:layout="@layout/fragment_setting_password" />
+        tools:layout="@layout/fragment_setting_password" >
+        <action
+            android:id="@+id/action_settingPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="uz.triples.qulaymarket.login.SplashFragment"
+        android:name="uz.triples.qulaymarket.login.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/enteringCodeFragment"
-        android:name="uz.triples.qulaymarket.login.EnteringCodeFragment"
+        android:name="uz.triples.qulaymarket.login.entering_code.EnteringCodeFragment"
         android:label="fragment_entering_code"
         tools:layout="@layout/fragment_entering_code">
         <action
             android:id="@+id/action_enteringCodeFragment_to_settingPasswordFragment"
-            app:destination="@id/settingPasswordFragment" />
+            app:destination="@id/settingPasswordFragment"
+            app:launchSingleTop="true"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
 </navigation>

@@ -7,17 +7,17 @@
 
     <ImageView
         android:id="@+id/imageSectionRV"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:background="@drawable/sections_unselected_bkg"
         android:padding="24dp"
         android:src="@drawable/test_ic" />
 
     <TextView
         android:id="@+id/titleSectionRV"
-        android:layout_width="70dp"
+        android:layout_width="90dp"
         android:gravity="center"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
         android:text="Oziq-ovqat"/>

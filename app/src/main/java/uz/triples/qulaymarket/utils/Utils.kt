@@ -44,3 +44,20 @@ fun Context.hideKeyboard(view: View) {
 }
 
 enum class Status {LOADING, ERROR, DONE}
+
+fun String.isValidMail():Boolean = android.util.Patterns.EMAIL_ADDRESS.matcher(
+    this
+).matches()
+fun String.isValidPhoneNumber():Boolean{
+    val internationalPattern = android.util.Patterns.PHONE.matcher(this).matches()
+
+    val phone = when {
+        this.startsWith("+998") -> this.substring(4)
+        this.startsWith("998") -> this.substring(3)
+        else -> this
+    }
+
+    val local = if(this.startsWith("+998")) phone.length == 9 else phone.length == 8
+
+    return local && internationalPattern
+}

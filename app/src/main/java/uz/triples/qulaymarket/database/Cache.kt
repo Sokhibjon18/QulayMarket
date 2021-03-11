@@ -54,4 +54,8 @@ object Cache {
     fun setUserPassword(password: String){
         preferences.edit().putString("userPassword", password).apply()
     }
+
+    fun getTemporaryPasswordForRegister():String{
+        return "fsdfds65f4ds65f44sd5f46sd5f46sd5"
+    }
 }

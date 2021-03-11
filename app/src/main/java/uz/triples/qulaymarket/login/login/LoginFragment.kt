@@ -1,8 +1,9 @@
-package uz.triples.qulaymarket.login
+package uz.triples.qulaymarket.login.login
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -20,21 +21,15 @@ import uz.triples.qulaymarket.database.Cache
 import uz.triples.qulaymarket.network.NetWorkInterface
 import uz.triples.qulaymarket.network.Network
 import uz.triples.qulaymarket.network.pojo_objects.LoginWithEmailOrPhoneResponse
-import uz.triples.qulaymarket.utils.gone
-import uz.triples.qulaymarket.utils.visible
-
+import uz.triples.qulaymarket.utils.*
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val TAG = "LoginFragment"
-    private var registration = false;
+    private var registration = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (Cache.loggedIn()) {
-            navigateToHomeActivity()
-        }
 
         kirish.callOnClick()
 
@@ -57,7 +52,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         R.color.grey
                     )
                 )
-                hideKeyboard()
+                requireActivity().hideKeyboard()
                 password.gone()
                 forgetPassword.gone()
                 acceptRequirements.visible()
@@ -86,7 +81,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 password.visible()
                 acceptRequirements.gone()
                 forgetPassword.visible()
-                hideKeyboard()
+                requireActivity().hideKeyboard()
                 registration = false
             }
         }
@@ -94,16 +89,60 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         kirishBtn.setOnClickListener {
             if (registration) {
                 val emailOrPhone = phoneNumber.text.toString()
+                val service = Network.getInstance().create(NetWorkInterface::class.java)
 
                 when {
                     emailOrPhone.isValidMail() -> {
-                        findNavController().navigate(R.id.enteringCodeFragment, bundleOf("emailOrPhone" to emailOrPhone, "email" to true))
+                        val registerWithEmail = service.registerWithEmail(
+                            emailOrPhone,
+                            Cache.getTemporaryPasswordForRegister()
+                        )
+                        registerWithEmail.enqueue(object :
+                            Callback<LoginWithEmailOrPhoneResponse> {
+                            override fun onResponse(
+                                call: Call<LoginWithEmailOrPhoneResponse>,
+                                response: Response<LoginWithEmailOrPhoneResponse>
+                            ) {
+                                //if(false){
+                                Cache.setToken(
+                                    response.body()?.result ?: "NoToken"
+                                )
+                                findNavController().navigate(
+                                    R.id.action_loginFragment_to_enteringCodeFragment,
+                                    bundleOf(
+                                        "emailOrPhone" to emailOrPhone,
+                                        "email" to true
+                                    )
+                                )
+                                //}
+
+                                Log.i("AAAA", response.body().toString())
+                            }
+
+                            override fun onFailure(
+                                call: Call<LoginWithEmailOrPhoneResponse>,
+                                t: Throwable
+                            ) {
+
+                            }
+
+                        })
+
                     }
                     emailOrPhone.isValidPhoneNumber() -> {
-                        findNavController().navigate(R.id.enteringCodeFragment, bundleOf("emailOrPhone" to emailOrPhone, "email" to false))
+                        findNavController().navigate(
+                            R.id.enteringCodeFragment, bundleOf(
+                                "emailOrPhone" to emailOrPhone,
+                                "email" to false
+                            )
+                        )
                     }
                     else -> {
-                        Toast.makeText(requireContext(), "Telefon raqam yoki email xato", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Telefon raqam yoki email xato",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } else {
@@ -115,7 +154,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     val logInResponse = if(emailOrPhone.isValidMail()){
                         service.logInWithEmail(emailOrPhone, password)
                     } else{
-                        val validPhone = if(emailOrPhone.startsWith("+998")) emailOrPhone.substring(4) else emailOrPhone
+                        val validPhone = if(emailOrPhone.startsWith("+998")) emailOrPhone.substring(
+                            4
+                        ) else emailOrPhone
                         service.logInWithPhone(validPhone, password)
                     }
 
@@ -155,7 +196,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                     })
                 } else{
-                    Toast.makeText(requireContext(), "Telefon raqam yoki email xato", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Telefon raqam yoki email xato",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -173,25 +218,5 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 HomeActivity::class.java
             )
         )
-    }
-
-    private fun hideKeyboard(){
-        val view = requireActivity().currentFocus
-        view?.let {
-            val manager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            manager.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-    }
-
-    private fun String.isValidMail():Boolean = android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
-
-    private fun String.isValidPhoneNumber():Boolean{
-        val internationalPattern = android.util.Patterns.PHONE.matcher(this).matches()
-
-        val phone = if(this.startsWith("+998")) this.substring(4) else this
-
-        val local = phone.length == 9
-
-        return local && internationalPattern
     }
 }

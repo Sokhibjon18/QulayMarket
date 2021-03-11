@@ -82,6 +82,7 @@
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:reverseLayout="false"
+                        listDataTags="@{viewModel.tags}"
                         android:overScrollMode="never"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

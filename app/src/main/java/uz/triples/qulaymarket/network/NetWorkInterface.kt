@@ -15,8 +15,24 @@ interface NetWorkInterface {
     @GET("/login")
     fun logInWithPhone(@Query("phone") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
 
+    @GET("/register")
+    fun registerWithEmail(@Query("email") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
+
+    @GET("/register")
+    fun registerWithPhone(@Query("phone") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
+
+    @GET("/activate")
+    suspend fun activateEmail(@Query("email") email: String, @Query("code") password: String, @Header("Token") token: String): ActivateResult
+
+    @GET("/activate")
+    suspend fun activatePhone(@Query("phone") email: String, @Query("code") password: String, @Header("Token") token: String): ActivateResult
+
+
     @GET("/announcements")
     suspend fun getAllAnnouncements(): GetAllAnnouncements
+
+    @GET("/tags")
+    suspend fun getTags(): GetTagsResponse
 
     @GET("/announcements/search")
     suspend fun searchFromAnnouncements(@Query("value") value: String): GetAllAnnouncements
@@ -27,7 +43,6 @@ interface NetWorkInterface {
     @FormUrlEncoded
     @PUT("/user")
     fun uploadImage(@Field("image") image: String, @Header("Token") token:String):Call<GetUserResponse>
-
 
     @PUT("/user")
     fun updateUserBirthDate(@Query("birthdate") birthdate:String, @Header("Token") token:String):Call<GetUserResponse>

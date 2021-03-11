@@ -15,13 +15,14 @@ import uz.triples.qulaymarket.databinding.FragmentAllGoodsBinding
 import uz.triples.qulaymarket.home.adapters.GoodsRVA
 import uz.triples.qulaymarket.home.adapters.SectionsRVA
 import uz.triples.qulaymarket.network.pojo_objects.Announcement
+import uz.triples.qulaymarket.network.pojo_objects.Tags
 import uz.triples.qulaymarket.utils.Status
 
 class AllGoodsFragment : Fragment() {
 
     private val adapterSections: SectionsRVA by lazy {SectionsRVA(requireContext())}
     private lateinit var adapterGoods: GoodsRVA
-    private var listSection = arrayListOf<Section>()
+    private var listSection = arrayListOf<Tags>()
 
     private lateinit var binding: FragmentAllGoodsBinding
     private val viewModel: AllGoodsFragmentViewModel by lazy {
@@ -57,6 +58,7 @@ class AllGoodsFragment : Fragment() {
         },false)
 
         binding.GoodsRV.adapter = adapterGoods
+        binding.sectionsRV.adapter = adapterSections
 
         return binding.root
     }
@@ -64,8 +66,8 @@ class AllGoodsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.sectionsRV.adapter = adapterSections
 
-        adapterSections.submitList(listSection)
+
+        //adapterSections.submitList(listSection)
     }
 }

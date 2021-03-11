@@ -18,6 +18,10 @@
     <string name="all_products"><u>Muallifning barcha e` lonlari</u></string>
     <string name="info_chat">Xabarni qabul qilsangiz yoki yuborsangiz <br></br> shu yerda ko\'rinadi</string>
 
-    <dimen name="design_bottom_navigation_text_size" tools:override="true">30sp</dimen>
-    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">30sp</dimen>
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">
+        30sp
+    </dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">
+        30sp
+    </dimen>
 </resources>

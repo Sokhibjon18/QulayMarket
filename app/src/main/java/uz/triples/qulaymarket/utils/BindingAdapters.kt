@@ -9,9 +9,11 @@ import de.hdodenhof.circleimageview.CircleImageView
 import uz.triples.qulaymarket.R
 import uz.triples.qulaymarket.database.Cache
 import uz.triples.qulaymarket.home.adapters.GoodsRVA
+import uz.triples.qulaymarket.home.adapters.SectionsRVA
 import uz.triples.qulaymarket.network.Network
 import uz.triples.qulaymarket.network.Network.baseUrl
 import uz.triples.qulaymarket.network.pojo_objects.Announcement
+import uz.triples.qulaymarket.network.pojo_objects.Tags
 import uz.triples.qulaymarket.network.pojo_objects.User
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,6 +21,14 @@ import java.util.*
 @BindingAdapter("listData")
 fun bindRecyclerViewAnnouncements(recyclerView: RecyclerView, data: List<Announcement>?){
     val adapter = recyclerView.adapter as GoodsRVA
+    data?.let {
+        adapter.submitList(it)
+    }
+}
+
+@BindingAdapter("listDataTags")
+fun bindRecyclerViewTags(recyclerView: RecyclerView, data: List<Tags>?){
+    val adapter = recyclerView.adapter as SectionsRVA
     data?.let {
         adapter.submitList(it)
     }

@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import uz.triples.qulaymarket.network.NetWorkInterface
 import uz.triples.qulaymarket.network.Network
 import uz.triples.qulaymarket.network.pojo_objects.Announcement
+import uz.triples.qulaymarket.network.pojo_objects.Tags
 import uz.triples.qulaymarket.utils.Status
 import java.lang.Exception
 
@@ -16,6 +17,10 @@ class AllGoodsFragmentViewModel: ViewModel() {
     private val _announcements = MutableLiveData<List<Announcement>>()
     val announcements: LiveData<List<Announcement>>
     get() = _announcements
+
+    private val _tags = MutableLiveData<List<Tags>>()
+    val tags: LiveData<List<Tags>>
+        get() = _tags
 
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status>
@@ -31,6 +36,7 @@ class AllGoodsFragmentViewModel: ViewModel() {
             try {
                 val service = Network.getInstance().create(NetWorkInterface::class.java)
                 _announcements.value = service.getAllAnnouncements().result
+                _tags.value = service.getTags().result
                 _status.value = Status.DONE
             } catch (e: Exception){
                 _status.value = Status.ERROR
