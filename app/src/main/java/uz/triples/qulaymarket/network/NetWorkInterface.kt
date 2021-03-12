@@ -6,20 +6,17 @@ import uz.triples.qulaymarket.network.pojo_objects.*
 
 interface NetWorkInterface {
 
-    @GET("/register?email={email}&password={password}")
-    fun registerUserWithEmail(@Path("email") email: String, @Path("password") password: String): Call<RegisterWithEmailResponse>
+    @GET("/login")
+    suspend fun logInWithEmail(@Query("email") email: String, @Query("password") password: String): LoginWithEmailOrPhoneResponse
 
     @GET("/login")
-    fun logInWithEmail(@Query("email") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
-
-    @GET("/login")
-    fun logInWithPhone(@Query("phone") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
+    suspend fun logInWithPhone(@Query("phone") email: String, @Query("password") password: String): LoginWithEmailOrPhoneResponse
 
     @GET("/register")
-    fun registerWithEmail(@Query("email") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
+    suspend fun registerWithEmail(@Query("email") email: String, @Query("password") password: String): LoginWithEmailOrPhoneResponse
 
     @GET("/register")
-    fun registerWithPhone(@Query("phone") email: String, @Query("password") password: String): Call<LoginWithEmailOrPhoneResponse>
+    suspend fun registerWithPhone(@Query("phone") email: String, @Query("password") password: String): LoginWithEmailOrPhoneResponse
 
     @GET("/activate")
     suspend fun activateEmail(@Query("email") email: String, @Query("code") password: String, @Header("Token") token: String): ActivateResult

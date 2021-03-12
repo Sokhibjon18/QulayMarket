@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".login.register_page">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="uz.triples.qulaymarket.login.login_or_register.register_page.RegisterPageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".login.login_or_register.register_page.register_page">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/telefon_raqamyoki_email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColorHint="@color/grey"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/acceptRequirements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/tasdiqlayman"
+            android:textSize="10sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/grey"
+            app:layout_constraintBottom_toTopOf="@id/enterBtn"
+            app:layout_constraintTop_toBottomOf="@id/phoneNumber" />
+
+        <Button
+            android:id="@+id/enterBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:background="@color/lightBlue"
+            android:padding="16dp"
+            android:text="@string/kirish"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/acceptRequirements" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

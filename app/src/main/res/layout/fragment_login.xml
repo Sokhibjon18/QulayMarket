@@ -1,182 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/loginLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".login.login.LoginFragment">
-
-    <ImageView
-        android:id="@+id/logoLogin"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintBottom_toTopOf="@id/welcomeTextLogin"
-        app:layout_constraintDimensionRatio="h,1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintWidth_percent="0.15" />
-
-    <TextView
-        android:id="@+id/welcomeTextLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/welcome"
-        android:textColor="@color/darkBlue"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/buttonsContainer"
-        app:layout_constraintEnd_toEndOf="@id/logoLogin"
-        app:layout_constraintStart_toStartOf="@id/logoLogin"
-        app:layout_constraintTop_toBottomOf="@id/logoLogin" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/buttonsContainer"
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/loginLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="48dp"
-        app:layout_constraintVertical_bias="0.45"
-        android:background="@drawable/login_button_bkg"
-        android:backgroundTint="@color/lightGrey"
-        android:padding="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".login.login_or_register.LoginOrRegisterFragment">
 
-        <LinearLayout
-            android:id="@+id/indicator"
+        <ImageView
+            android:id="@+id/logoLogin"
             android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:background="@drawable/login_button_bkg"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toTopOf="@id/welcomeTextLogin"
+            app:layout_constraintDimensionRatio="h,1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.5" />
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.15" />
 
         <TextView
-            android:id="@+id/kirish"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/kirish"
-            android:textColor="@color/darkBlue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/royxatdanOtish"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/royxatdanOtish"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:elevation="16dp"
-            android:gravity="center"
-            android:text="@string/ro_yxatdan_o_tish"
-            android:textColor="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/kirish"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/phoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="24dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="@string/telefon_raqamyoki_email"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:textColorHint="@color/grey"
-        app:layout_constraintVertical_bias="0.55"
-        android:textSize="12sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="8dp"
-        android:textColorHint="@color/grey"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
-        app:layout_constraintBottom_toTopOf="@id/acceptRequirements"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phoneNumber"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/grey">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+            android:id="@+id/welcomeTextLogin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_background"
-            android:hint="@string/parol"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:layout_marginTop="20dp"
+            android:text="@string/welcome"
+            android:textColor="@color/darkBlue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tabLayoutContainer"
+            app:layout_constraintEnd_toEndOf="@id/logoLogin"
+            app:layout_constraintStart_toStartOf="@id/logoLogin"
+            app:layout_constraintTop_toBottomOf="@id/logoLogin" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:id="@+id/tabLayoutContainer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:background="@drawable/login_button_bkg"
+            android:backgroundTint="@color/lightGrey"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.45">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                app:tabPaddingBottom="4dp"
+                app:tabPaddingEnd="4dp"
+                app:tabPaddingStart="4dp"
+                app:tabPaddingTop="4dp"
+                style="@style/tabLayout"
+                app:tabBackground="@drawable/tab_item_background"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="2dp"
+                android:backgroundTint="@color/lightGrey"
+                app:tabIndicator="@drawable/login_button_bkg"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/login_button_bkg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/acceptRequirements"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:fontFamily="@font/poppins_light"
-        android:text="@string/tasdiqlayman"
-        android:textSize="10sp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/grey"
-        app:layout_constraintBottom_toTopOf="@id/kirishBtn"
-        app:layout_constraintTop_toBottomOf="@id/password" />
 
-    <Button
-        android:id="@+id/kirishBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:background="@color/lightBlue"
-        android:padding="16dp"
-        android:text="@string/kirish"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@id/forgetPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/acceptRequirements" />
-
-    <TextView
-        android:id="@+id/forgetPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Parolni unutdingizmi?"
-        android:textColor="@color/grey"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kirishBtn" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            app:layout_constraintTop_toBottomOf="@id/tabLayoutContainer"
+            android:layout_marginTop="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="0dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

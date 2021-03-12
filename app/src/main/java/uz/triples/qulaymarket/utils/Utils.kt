@@ -3,12 +3,15 @@ package uz.triples.qulaymarket.utils
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import uz.triples.qulaymarket.HomeActivity
+
 
 fun Activity.toast(text: String){
     Toast.makeText(this, text, Toast.LENGTH_LONG).show()
@@ -60,4 +63,28 @@ fun String.isValidPhoneNumber():Boolean{
     val local = if(this.startsWith("+998")) phone.length == 9 else phone.length == 8
 
     return local && internationalPattern
+}
+
+fun Fragment.navigateToHomeActivity() {
+    requireActivity().finish()
+    startActivity(
+        Intent(
+            requireActivity(),
+            HomeActivity::class.java
+        )
+    )
+}
+
+fun isNetwork(context: Context): Boolean {
+    val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetworkInfo = connectivityManager.activeNetworkInfo
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected
+}
+
+fun isConnectedNetwork(context: Context): Boolean {
+    val cm = context.getSystemService(
+        Context.CONNECTIVITY_SERVICE
+    ) as ConnectivityManager
+    return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!
+        .isConnectedOrConnecting
 }

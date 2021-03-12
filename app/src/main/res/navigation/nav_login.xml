@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="uz.triples.qulaymarket.login.login.LoginFragment"
+        android:name="uz.triples.qulaymarket.login.login_or_register.LoginOrRegisterFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action

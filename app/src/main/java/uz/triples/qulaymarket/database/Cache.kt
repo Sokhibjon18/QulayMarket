@@ -55,6 +55,14 @@ object Cache {
         preferences.edit().putString("userPassword", password).apply()
     }
 
+    fun setLastClickTime(){
+        preferences.edit().putLong("lastClickTime", System.currentTimeMillis()).apply()
+    }
+
+    fun getLastClickTime():Long{
+        return preferences.getLong("lastClickTime", 0)
+    }
+
     fun getTemporaryPasswordForRegister():String{
         return "fsdfds65f4ds65f44sd5f46sd5f46sd5"
     }
